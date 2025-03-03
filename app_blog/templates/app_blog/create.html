@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form method="post" action="">
+        <form method="POST">
+            {% csrf_token %}
+            <label for="title">Judul:</label>
+            <input type="text" id="title" name="title" required>
+            
+            <label for="content">Konten:</label>
+            <textarea id="content" name="content" required></textarea>
+        
+            <button type="submit">Buat Post</button>
+        </form>
+        
+        <!-- Tombol untuk kembali ke daftar post -->
+        <a href="{% url 'blog_list' %}">
+            <button>Kembali ke Daftar Post</button>
+        </a>
+        
+    </form>
+
+    {% for res in result %}
+        {{ res.id }} <br>
+        {{ res.title }} <br>
+        {{ res.content }} <br>
+        {{ res.date }} <br>
+    {% endfor %}
+    
+</body>
+</html>
